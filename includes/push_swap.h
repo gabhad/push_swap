@@ -16,19 +16,19 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include "ft_printf.h"
+#include "../libftprintf/includes/ft_printf.h"
 
-typedef struct s_value
+typedef struct 		s_value
 {
-	int		value;
-	t_value	next;
-}				t_value;
+	int					value;
+	struct s_value		*next;
+	struct s_value		*previous;
+}					t_value;
 
-typedef struct s_stack
+typedef struct		s_stack
 {
-	t_value	*start;
-	t_value	*next;
-}				t_stack;
+	t_value			*start;
+}					t_stack;
 
 t_value		*create_stack(char **tab);
 void		swap_a(t_stack *stack_a);

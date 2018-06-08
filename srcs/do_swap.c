@@ -14,36 +14,47 @@
 
 void	swap_s(t_stack *stack_a, t_stack *stack_b)
 {
-	swap_a(stack_a);
-	swap_b(stack_b);
+	t_value	*temp;
+
+	if (stack_a->start && stack_a->start->next != stack_a->start)
+	{
+		temp = stack_a->start->next;
+		stack_a->start->next = temp->next;
+		temp->next = stack_a->start;
+		stack_a->start = temp;
+	}
+	if (stack_b->start && stack_b->start->next != stack_b->start)
+	{
+		temp = stack_b->start->next;
+		stack_b->start->next = temp->next;
+		temp->next = stack_b->start;
+		stack_b->start = temp;
+	}
+	write(1, "ss\n", 3);
 }
 
 void	swap_b(t_stack *stack_b)
 {
 	t_value	*temp;
-	t_value *tempbis;
 
-	if (!(stack_b->start) || !(stack_b->next))
+	if (!stack_b->start || stack_b->start->next == stack_b->start)
 		return;
 	temp = stack_b->start->next;
-	tempbis = temp->next;
+	stack_b->start->next = temp->next;
 	temp->next = stack_b->start;
-	start->next = tempbis;
-	stack_b->start->next = tempbis;
 	stack_b->start = temp;
+	write(1, "sb\n", 3);
 }
 
 void	swap_a(t_stack *stack_a)
 {
 	t_value	*temp;
-	t_value *tempbis;
 
-	if (!(stack_a->start) || !(stack_a->next))
+	if (!stack_a->start || stack_a->start->next == stack_a->start)
 		return;
 	temp = stack_a->start->next;
-	tempbis = temp->next;
+	stack_a->start->next = temp->next;
 	temp->next = stack_a->start;
-	start->next = tempbis;
-	stack_a->start->next = tempbis;
 	stack_a->start = temp;
+	write(1, "sa\n", 3);
 }

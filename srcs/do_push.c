@@ -15,25 +15,27 @@
 void	push_b(t_stack *stack_a, t_stack *stack_b)
 {
 	t_value	*temp;
-	t_value *tempbis;
 
-	if (!(stack_a->start))
+	if (!stack_a->start)
 		return;
 	temp = stack_a->start;
-	tempbis = temp->next;
+	temp->previous->next = temp->next;
+	stack_b->start->previous->next = temp;
 	temp->next = stack_b->start;
-	stack_a->start = tempbis;
+	stack_b->start = temp;
+	write(1, "pb\n", 3);
 }
 
 void	push_a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_value	*temp;
-	t_value *tempbis;
 
-	if (!(stack_b->start))
+	if (!stack_b->start)
 		return;
 	temp = stack_b->start;
-	tempbis = temp->next;
+	temp->previous->next = temp->next;
+	stack_a->start->previous->next = temp;
 	temp->next = stack_a->start;
-	stack_b->start = tempbis;
+	stack_a->start = temp;
+	write(1, "pa\n", 3);
 }

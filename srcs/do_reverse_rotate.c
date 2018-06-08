@@ -14,42 +14,19 @@
 
 void	reverse_rotate_r(t_stack *stack_a, t_stack *stack_b)
 {
-	reverse_rotate_a(stack_a);
-	reverse_rotate_b(stack_b);
+	stack_a->start = stack_a->start->previous;
+	stack_b->start = stack_b->start->previous;
+	write(1, "rrr\n", 4);
 }
 
 void	reverse_rotate_b(t_stack *stack_b)
 {
-	t_value	*temp;
-	t_value	*tempbis;
-
-	if (!stack_b || !(stack_b->next))
-		return;
-	temp = stack_b->start;
-	while (temp->next->next)
-	{
-		temp = temp->next;
-		tempbis = temp->next;
-	}
-	tempbis->next = stack_b->start;
-	temp->next = NULL;
-	stack_b->start = tempbis;
+	stack_b->start = stack_b->start->previous;
+	write(1, "rrb\n", 4);
 }
 
 void	reverse_rotate_a(t_stack *stack_a)
 {
-	t_value	*temp;
-	t_value	*tempbis;
-
-	if (!stack_a || !(stack_a->next))
-		return;
-	temp = stack_a->start;
-	while (temp->next->next)
-	{
-		temp = temp->next;
-		tempbis = temp->next;
-	}
-	tempbis->next = stack_a->start;
-	temp->next = NULL;
-	stack_a->start = tempbis;
+	stack_a->start = stack_a->start->previous;
+	write(1, "rra\n", 4);
 }

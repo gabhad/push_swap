@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	check_errors(char **argv)
 {
 	int		i;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
 		if (ft_atoi(argv[i]) == 0 && ft_strcmp(argv[i], "0") != 0)
@@ -38,8 +38,10 @@ int			main(int argc, char **argv)
 		return (0);
 	if (check_errors(argv))
 		return (0);
+	if (!(stack_a = (t_stack*)malloc(sizeof(t_stack))))
+		return (-1);
 	start = create_stack(argv);
 	stack_a->start = start;
-	solver(stack_a);
+//	solver(stack_a);
 	return (0);
 }

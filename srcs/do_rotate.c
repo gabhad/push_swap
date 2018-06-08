@@ -14,36 +14,19 @@
 
 void	rotate_s(t_stack *stack_a, t_stack *stack_b)
 {
-	rotate_a(stack_a);
-	rotate_b(stack_b);
+	stack_a->start = stack_a->start->next;
+	stack_b->start = stack_b->start->next;
+	write(1, "rr\n", 3);
 }
 
 void	rotate_b(t_stack *stack_b);
 {
-	t_value	*temp;
-	t_value *tempbis;
-
-	if (!stack_b || !(stack_b->next))
-		return;
-	temp = stack_b->start;
-	tempbis = temp->next;
-	while (stack_b->next)
-		temp = temp->next;
-	temp->next = stack_b->start;
-	stack_b->start = tempbis;
+	stack_b->start = stack_b->start->next;
+	write(1, "rb\n", 3);
 }
 
 void	rotate_a(t_stack *stack_a);
 {
-	t_value	*temp;
-	t_value *tempbis;
-
-	if (!stack_a || !(stack_a->next))
-		return;
-	temp = stack_a->start;
-	tempbis = temp->next;
-	while (stack_a->next)
-		temp = temp->next;
-	temp->next = stack_a->start;
-	stack_a->start = tempbis;
+	stack_a->start = stack_a->start->next;
+	write(1, "ra\n", 3);
 }
