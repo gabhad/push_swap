@@ -42,5 +42,8 @@ void		rotate_s(t_stack *stack_a, t_stack *stack_b);
 void		reverse_rotate_a(t_stack *stack_a);
 void		reverse_rotate_b(t_stack *stack_b);
 void		reverse_rotate_r(t_stack *stack_a, t_stack *stack_b);
+int			a_is_sorted(t_stack stack_a);
+int			b_is_sorted(t_stack stack_b);
+int			calc_median(t_stack *stack);
 
 #endif
