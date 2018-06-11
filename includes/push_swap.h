@@ -44,10 +44,13 @@ void		rotate_s(t_stack *stack_a, t_stack *stack_b);
 void		reverse_rotate_a(t_stack *stack_a, t_stack *stack_b);
 void		reverse_rotate_b(t_stack *stack_a, t_stack *stack_b);
 void		reverse_rotate_r(t_stack *stack_a, t_stack *stack_b);
-int			a_is_sorted(t_stack stack_a);
-int			b_is_sorted(t_stack stack_b);
+int			a_is_sorted(t_stack *stack_a);
+int			b_is_sorted(t_stack *stack_b);
 int			calc_median(t_stack *stack);
-void		solver(t_stack *stack_a);
-void		algo(stack_a, stack_b);
+void		swap_solver(t_stack *stack_a);
+void		algo(t_stack *stack_a, t_stack *stack_b);
+int			ismax(t_value *number);
+int			ismin(t_value *number);
+void		simplify_operations(t_stack *stack);
 
 #endif
