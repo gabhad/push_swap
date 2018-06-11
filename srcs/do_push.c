@@ -23,7 +23,9 @@ void	push_b(t_stack *stack_a, t_stack *stack_b)
 	stack_b->start->previous->next = temp;
 	temp->next = stack_b->start;
 	stack_b->start = temp;
-	write(1, "pb\n", 3);
+	stack_a->len = stack_a->len - 1;
+	stack_b->len = stack_b->len + 1;
+	ft_strjoinfree(stack_a->operations, ft_strdup("pb\n"));
 }
 
 void	push_a(t_stack *stack_a, t_stack *stack_b)
@@ -37,5 +39,7 @@ void	push_a(t_stack *stack_a, t_stack *stack_b)
 	stack_a->start->previous->next = temp;
 	temp->next = stack_a->start;
 	stack_a->start = temp;
-	write(1, "pa\n", 3);
+	stack_a->len = stack_a->len + 1;
+	stack_b->len = stack_b->len - 1;
+	ft_strjoinfree(stack_a->operations, ft_strdup("pa\n"));
 }

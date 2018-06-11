@@ -16,17 +16,17 @@ void	rotate_s(t_stack *stack_a, t_stack *stack_b)
 {
 	stack_a->start = stack_a->start->next;
 	stack_b->start = stack_b->start->next;
-	write(1, "rr\n", 3);
+	ft_strjoinfree(stack_a->operations, ft_strdup("rr\n"));
 }
 
-void	rotate_b(t_stack *stack_b);
+void	rotate_b(t_stack *stack_a, t_stack *stack_b)
 {
 	stack_b->start = stack_b->start->next;
-	write(1, "rb\n", 3);
+	ft_strjoinfree(stack_a->operations, ft_strdup("rb\n"));
 }
 
-void	rotate_a(t_stack *stack_a);
+void	rotate_a(t_stack *stack_a, t_stack *stack_b)
 {
 	stack_a->start = stack_a->start->next;
-	write(1, "ra\n", 3);
+	ft_strjoinfree(stack_a->operations, ft_strdup("ra\n"));
 }

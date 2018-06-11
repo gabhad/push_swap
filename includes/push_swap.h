@@ -27,23 +27,27 @@ typedef struct 		s_value
 
 typedef struct		s_stack
 {
-	t_value			*start;
+	t_value				*start;
+	int					len;
+	char				*operations;
 }					t_stack;
 
 t_value		*create_stack(char **tab);
-void		swap_a(t_stack *stack_a);
-void		swap_b(t_stack *stack_b);
+void		swap_a(t_stack *stack_a, t_stack *stack_b);
+void		swap_b(t_stack *stack_a, t_stack *stack_b);
 void		swap_s(t_stack *stack_a, t_stack *stack_b);
 void		push_a(t_stack *stack_a, t_stack *stack_b);
 void		push_b(t_stack *stack_a, t_stack *stack_b);
-void		rotate_a(t_stack *stack_a);
-void		rotate_b(t_stack *stack_b);
+void		rotate_a(t_stack *stack_a, t_stack *stack_b);
+void		rotate_b(t_stack *stack_a, t_stack *stack_b);
 void		rotate_s(t_stack *stack_a, t_stack *stack_b);
-void		reverse_rotate_a(t_stack *stack_a);
-void		reverse_rotate_b(t_stack *stack_b);
+void		reverse_rotate_a(t_stack *stack_a, t_stack *stack_b);
+void		reverse_rotate_b(t_stack *stack_a, t_stack *stack_b);
 void		reverse_rotate_r(t_stack *stack_a, t_stack *stack_b);
 int			a_is_sorted(t_stack stack_a);
 int			b_is_sorted(t_stack stack_b);
 int			calc_median(t_stack *stack);
+void		solver(t_stack *stack_a);
+void		algo(stack_a, stack_b);
 
 #endif

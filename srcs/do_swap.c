@@ -30,10 +30,10 @@ void	swap_s(t_stack *stack_a, t_stack *stack_b)
 		temp->next = stack_b->start;
 		stack_b->start = temp;
 	}
-	write(1, "ss\n", 3);
+	ft_strjoinfree(stack_a->operations, ft_strdup("ss\n"));
 }
 
-void	swap_b(t_stack *stack_b)
+void	swap_b(t_stack *stack_a, t_stack *stack_b)
 {
 	t_value	*temp;
 
@@ -43,10 +43,10 @@ void	swap_b(t_stack *stack_b)
 	stack_b->start->next = temp->next;
 	temp->next = stack_b->start;
 	stack_b->start = temp;
-	write(1, "sb\n", 3);
+	ft_strjoinfree(stack_a->operations, ft_strdup("sb\n"));
 }
 
-void	swap_a(t_stack *stack_a)
+void	swap_a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_value	*temp;
 
@@ -56,5 +56,5 @@ void	swap_a(t_stack *stack_a)
 	stack_a->start->next = temp->next;
 	temp->next = stack_a->start;
 	stack_a->start = temp;
-	write(1, "sa\n", 3);
+	ft_strjoinfree(stack_a->operations, ft_strdup("sa\n"));
 }
