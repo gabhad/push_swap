@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	swap_s(t_stack *stack_a, t_stack *stack_b)
 {
@@ -38,7 +38,7 @@ void	swap_b(t_stack *stack_a, t_stack *stack_b)
 	t_value	*temp;
 
 	if (!stack_b->start || stack_b->start->next == stack_b->start)
-		return;
+		return ;
 	temp = stack_b->start->next;
 	stack_b->start->next = temp->next;
 	temp->next = stack_b->start;
@@ -50,8 +50,9 @@ void	swap_a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_value	*temp;
 
+	(void)stack_b;
 	if (!stack_a->start || stack_a->start->next == stack_a->start)
-		return;
+		return ;
 	temp = stack_a->start->next;
 	stack_a->start->next = temp->next;
 	temp->next = stack_a->start;

@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorted_stack.c                                     :+:      :+:    :+:   */
+/*   maxmin.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghaddad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/08 13:44:47 by ghaddad           #+#    #+#             */
-/*   Updated: 2018/06/08 13:44:53 by ghaddad          ###   ########.fr       */
+/*   Created: 2018/06/11 12:03:25 by ghaddad           #+#    #+#             */
+/*   Updated: 2018/06/11 12:03:29 by ghaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/push_swap.c"
 
-int		a_is_sorted(t_stack *stack_a)
+int	ismax(t_value *number)
 {
 	t_value	*temp;
 
-	if (!stack_a->start || stack_a->start->next == stack_a->start)
-		return (1);
-	temp = stack_a->start;
-	while (temp->next != stack_a->start)
+	temp = number->next;
+	while (temp != number)
 	{
-		if (temp->value > temp->next->value)
+		if (temp->value > number->value)
 			return (0);
 		temp = temp->next;
 	}
 	return (1);
 }
 
-int		b_is_sorted(t_stack *stack_b)
+int	ismin(t_value *number)
 {
 	t_value	*temp;
 
-	if (!stack_b->start || stack_b->start->next == stack_b->start)
-		return (1);
-	temp = stack_b->start;
-	while (temp->next != stack_b->start)
+	temp = number->next;
+	while (temp != number)
 	{
-		if (temp->value < temp->next->value)
+		if (temp->value < number->value)
 			return (0);
 		temp = temp->next;
 	}

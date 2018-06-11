@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	reverse_rotate_r(t_stack *stack_a, t_stack *stack_b)
 {
@@ -27,6 +27,7 @@ void	reverse_rotate_b(t_stack *stack_a, t_stack *stack_b)
 
 void	reverse_rotate_a(t_stack *stack_a, t_stack *stack_b)
 {
+	(void)stack_b;
 	stack_a->start = stack_a->start->previous;
 	ft_strjoinfree(stack_a->operations, ft_strdup("rra\n"));
 }

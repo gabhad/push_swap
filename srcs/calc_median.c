@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	*sort_list(int *list, int len)
 {
@@ -36,7 +36,6 @@ static int	*sort_list(int *list, int len)
 static int	*fill_list(t_stack *stack, int *list)
 {
 	int		i;
-	int		value;
 	t_value	*temp;
 
 	temp = stack->start;
@@ -54,7 +53,7 @@ static int	*fill_list(t_stack *stack, int *list)
 
 static int	get_stack_len(t_stack *stack)
 {
-	int 	i;
+	int		i;
 	t_value	*temp;
 
 	i = 1;
@@ -78,7 +77,7 @@ static int	get_median(t_stack *stack)
 		return (-1);
 	list = fill_list(stack, list);
 	list = sort_list(list, len);
-	if (len % 2 = 1)
+	if (len % 2 == 1)
 	{
 		len = len / 2 + 1;
 		median = list[len];

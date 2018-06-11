@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	check_errors(char **argv)
 {
@@ -40,10 +40,9 @@ int			main(int argc, char **argv)
 		return (0);
 	if (!(stack_a = (t_stack*)malloc(sizeof(t_stack))))
 		return (-1);
-	stack_a->errno = 0
 	start = create_stack(argv);
 	stack_a->start = start;
 	stack_a->len = argc - 1;
-	solver(stack_a);
+	swap_solver(stack_a);
 	return (0);
 }

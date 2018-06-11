@@ -10,16 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	swap_solver(t_stack *stack_a)
 {
 	t_stack	*stack_b;
 
-	if (a_is_sorted)
-		return ;
 	if (!(stack_b = (t_stack*)malloc(sizeof(t_stack))))
-		return (-1);
+		return ;
 	algo(stack_a, stack_b);
 	free(stack_b);
 }

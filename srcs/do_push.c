@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	push_b(t_stack *stack_a, t_stack *stack_b)
 {
 	t_value	*temp;
 
 	if (!stack_a->start)
-		return;
+		return ;
 	temp = stack_a->start;
 	temp->previous->next = temp->next;
 	stack_b->start->previous->next = temp;
@@ -33,7 +33,7 @@ void	push_a(t_stack *stack_a, t_stack *stack_b)
 	t_value	*temp;
 
 	if (!stack_b->start)
-		return;
+		return ;
 	temp = stack_b->start;
 	temp->previous->next = temp->next;
 	stack_a->start->previous->next = temp;
