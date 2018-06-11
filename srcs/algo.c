@@ -69,6 +69,7 @@ void		algo(t_stack *stack_a, t_stack *stack_b)
 	int		median;
 	int		len;
 
+
 	median = calc_median(stack_a);
 	len = stack_a->len;
 	while (stack_b->len < len / 2)

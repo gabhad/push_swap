@@ -20,6 +20,7 @@ void	swap_solver(t_stack *stack_a)
 		return ;
 	if (!(stack_b = (t_stack*)malloc(sizeof(t_stack))))
 		return ;
+	stack_b->len = 0;
 	algo(stack_a, stack_b);
 	free(stack_b);
 	simplify_operations(stack_a);

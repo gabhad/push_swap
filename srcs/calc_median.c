@@ -18,17 +18,17 @@ static int	*sort_list(int *list, int len)
 	int		temp;
 
 	i = 0;
-	while (i < len)
+	while (i < len - 1)
 	{
-		while (list[i] < list[i + i])
-			i++;
-		if (i < len && list[i] > list[i + 1])
+		if (list[i] > list[i + 1])
 		{
 			temp = list[i];
 			list[i] = list[i + 1];
 			list[i + 1] = temp;
 			i = 0;
 		}
+		else
+			i++;
 	}
 	return (list);
 }
@@ -39,10 +39,8 @@ static int	*fill_list(t_stack *stack, int *list)
 	t_value	*temp;
 
 	temp = stack->start;
-	i = 1;
-	list[0] = temp->value;
-	temp = temp->next;
-	while (temp != stack->start)
+	i = 0;
+	while (temp->next != stack->start)
 	{
 		list[i] = temp->value;
 		temp = temp->next;

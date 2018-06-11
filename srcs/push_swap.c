@@ -33,6 +33,7 @@ int			main(int argc, char **argv)
 {
 	t_value	*start;
 	t_stack *stack_a;
+	int		len;
 
 	if (argc == 1)
 		return (0);
@@ -43,6 +44,11 @@ int			main(int argc, char **argv)
 	start = create_stack(argv);
 	stack_a->start = start;
 	stack_a->len = argc - 1;
+	stack_a->operations = NULL;
 	swap_solver(stack_a);
+	len = ft_strlen(stack_a->operations);
+	write(1, stack_a->operations, len);
+	ft_strdel(&stack_a->operations);
+	free(stack_a);
 	return (0);
 }

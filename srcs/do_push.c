@@ -20,12 +20,19 @@ void	push_b(t_stack *stack_a, t_stack *stack_b)
 		return ;
 	temp = stack_a->start;
 	temp->previous->next = temp->next;
+	if (!stack_b->start)
+	{
+		stack_b->start = temp;
+		stack_b->start->previous = stack_b->start;
+		stack_b->start->next = stack_b->start;
+		return ;
+	}
 	stack_b->start->previous->next = temp;
 	temp->next = stack_b->start;
 	stack_b->start = temp;
 	stack_a->len = stack_a->len - 1;
 	stack_b->len = stack_b->len + 1;
-	ft_strjoinfree(stack_a->operations, ft_strdup("pb\n"));
+	stack_a->operations = ft_strjoinfree(stack_a->operations, ft_strdup("pb\n"));
 }
 
 void	push_a(t_stack *stack_a, t_stack *stack_b)
@@ -41,5 +48,5 @@ void	push_a(t_stack *stack_a, t_stack *stack_b)
 	stack_a->start = temp;
 	stack_a->len = stack_a->len + 1;
 	stack_b->len = stack_b->len - 1;
-	ft_strjoinfree(stack_a->operations, ft_strdup("pa\n"));
+	stack_a->operations = ft_strjoinfree(stack_a->operations, ft_strdup("pa\n"));
 }
