@@ -55,6 +55,8 @@ static int	get_stack_len(t_stack *stack)
 	t_value	*temp;
 
 	i = 1;
+	if (!stack->start)
+		return (0);
 	temp = stack->start;
 	while (temp->next != stack->start)
 	{
@@ -85,6 +87,7 @@ static int	get_median(t_stack *stack)
 		len = len / 2;
 		median = (list[len] + list[len + 1]) / 2;
 	}
+	free(list);
 	return (median);
 }
 
@@ -92,6 +95,10 @@ int			calc_median(t_stack *stack)
 {
 	int		median;
 
+	if (stack->start->next == stack->start)
+		return (stack->start->value);
+	else if (stack->start->next->next == stack->start)
+		return ((stack->start->value + stack->start->next->value) / 2);
 	median = get_median(stack);
 	return (median);
 }
