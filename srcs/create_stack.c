@@ -43,5 +43,6 @@ t_value			*create_stack(char **tab)
 		i++;
 	}
 	temp->next = start;
+	start->previous = temp;
 	return (start);
 }
