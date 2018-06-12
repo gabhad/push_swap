@@ -33,14 +33,14 @@ static int	*sort_list(int *list, int len)
 	return (list);
 }
 
-static int	*fill_list(t_stack *stack, int *list)
+static int	*fill_list(t_stack *stack, int *list, int len)
 {
 	int		i;
 	t_value	*temp;
 
 	temp = stack->start;
 	i = 0;
-	while (temp->next != stack->start)
+	while (i < len)
 	{
 		list[i] = temp->value;
 		temp = temp->next;
@@ -73,11 +73,11 @@ static int	get_median(t_stack *stack)
 	len = get_stack_len(stack);
 	if (!(list = (int*)malloc(sizeof(int) * len)))
 		return (-1);
-	list = fill_list(stack, list);
+	list = fill_list(stack, list, len);
 	list = sort_list(list, len);
 	if (len % 2 == 1)
 	{
-		len = len / 2 + 1;
+		len = len / 2;
 		median = list[len];
 	}
 	else

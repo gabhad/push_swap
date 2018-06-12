@@ -42,4 +42,8 @@ void	simplify_operations(t_stack *stack)
 		stack->operations = change_text(stack->operations, "ss", "sa\nsb");
 	while(strstr(stack->operations, "rra\nrrb"))
 		stack->operations = change_text(stack->operations, "rrr", "rra\nrrb");
+	while(strstr(stack->operations, "pb\npa"))
+		stack->operations = change_text(stack->operations, "", "pb\npa\n");
+	while(strstr(stack->operations, "pa\npb"))
+		stack->operations = change_text(stack->operations, "", "pa\npb\n");
 }

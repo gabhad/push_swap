@@ -18,12 +18,14 @@ static void	arrange_b(t_stack *stack_a, t_stack *stack_b)
 	t_value	*temp;
 
 	i = 0;
-	while(stack_b->start)
+	while(stack_b->len > 0)
 	{
 		while (ismax(stack_b->start))
 			push_a(stack_a, stack_b);
+		if (!stack_b->len)
+			return ;
 		temp = stack_b->start;
-		while (!ismax(stack_b->start))
+		while (!ismax(temp))
 		{
 			i++;
 			temp = temp->next;
@@ -48,7 +50,8 @@ static void	algo_suite(t_stack *stack_a, t_stack *stack_b)
 	{
 		while (ismin(stack_a->start))
 			push_b(stack_a, stack_b);
-		while (!ismin(stack_a->start))
+		temp = stack_a->start;
+		while (!ismin(temp))
 		{
 			i++;
 			temp = temp->next;
@@ -86,7 +89,7 @@ void		algo(t_stack *stack_a, t_stack *stack_b)
 		if (!(ismax(stack_b->start)))
 			rotate_b(stack_a, stack_b);
 	}
-	if (a_is_sorted(stack_a))
+	if (a_is_sorted(stack_a) == 1)
 		arrange_b(stack_a, stack_b);
 	else
 		algo_suite(stack_a, stack_b);

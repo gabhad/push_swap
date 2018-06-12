@@ -52,5 +52,6 @@ void		algo(t_stack *stack_a, t_stack *stack_b);
 int			ismax(t_value *number);
 int			ismin(t_value *number);
 void		simplify_operations(t_stack *stack);
+char		*add_text(char *s1, char *s2);
 
 #endif

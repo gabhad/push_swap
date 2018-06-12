@@ -16,18 +16,22 @@ void	reverse_rotate_r(t_stack *stack_a, t_stack *stack_b)
 {
 	stack_a->start = stack_a->start->previous;
 	stack_b->start = stack_b->start->previous;
-	stack_a->operations = ft_strjoinfree(stack_a->operations, ft_strdup("rrr\n"));
+	stack_a->operations = add_text(stack_a->operations, "rrr\n");
 }
 
 void	reverse_rotate_b(t_stack *stack_a, t_stack *stack_b)
 {
+	if (stack_b->len < 2)
+		return ;
 	stack_b->start = stack_b->start->previous;
-	stack_a->operations = ft_strjoinfree(stack_a->operations, ft_strdup("rrb\n"));
+	stack_a->operations = add_text(stack_a->operations, "rrb\n");
 }
 
 void	reverse_rotate_a(t_stack *stack_a, t_stack *stack_b)
 {
 	(void)stack_b;
+	if (stack_a->len < 2)
+		return ;
 	stack_a->start = stack_a->start->previous;
-	stack_a->operations = ft_strjoinfree(stack_a->operations, ft_strdup("rra\n"));
+	stack_a->operations = add_text(stack_a->operations, "rra\n");
 }

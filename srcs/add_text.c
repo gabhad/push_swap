@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_solver.c                                      :+:      :+:    :+:   */
+/*   add_text.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghaddad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/11 09:09:33 by ghaddad           #+#    #+#             */
-/*   Updated: 2018/06/11 09:09:35 by ghaddad          ###   ########.fr       */
+/*   Created: 2018/06/12 08:27:04 by ghaddad           #+#    #+#             */
+/*   Updated: 2018/06/12 08:27:05 by ghaddad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	swap_solver(t_stack *stack_a)
+char	*add_text(char *s1, char *s2)
 {
-	t_stack	*stack_b;
+	char	*final;
 
-	if (a_is_sorted(stack_a))
-		return ;
-	if (!(stack_b = (t_stack*)malloc(sizeof(t_stack))))
-		return ;
-	stack_b->len = 0;
-	stack_b->start = NULL;
-	algo(stack_a, stack_b);
-	free(stack_b);
-	simplify_operations(stack_a);
+	final = ft_strjoinfree(s1, ft_strdup(s2));
+	return (final);
 }

@@ -16,6 +16,8 @@ int	ismax(t_value *number)
 {
 	t_value	*temp;
 
+	if (!number || !(number->next))
+		return (0);
 	temp = number->next;
 	while (temp != number)
 	{
@@ -30,6 +32,8 @@ int	ismin(t_value *number)
 {
 	t_value	*temp;
 
+	if (!number || !(number->next))
+		return (0);
 	temp = number->next;
 	while (temp != number)
 	{
