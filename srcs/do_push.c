@@ -19,9 +19,11 @@ static void	clean_stack_b(t_stack *stack_a, t_stack *stack_b)
 	temp = stack_a->start->previous;
 	temp->next = stack_b->start;
 	stack_b->start->next = stack_a->start;
+	stack_b->start->previous = stack_a->start->previous;
 	stack_a->start = stack_b->start;
 	stack_b->start = NULL;
 	stack_b->len = 0;
+	stack_a->len += 1;
 	stack_a->operations = add_text(stack_a->operations, "pa\n");
 }
 
@@ -39,7 +41,7 @@ void		push_b(t_stack *stack_a, t_stack *stack_b)
 {
 	t_value	*temp;
 
-	if (!stack_a->start)
+	if (stack_a->len < 2)
 		return ;
 	temp = stack_a->start;
 	temp->previous->next = temp->next;
@@ -81,7 +83,7 @@ void		push_a(t_stack *stack_a, t_stack *stack_b)
 	temp->previous->next = temp;
 	stack_a->start = temp;
 	temp = temp->next;
-	temp->previous = stack_b->start;
+	temp->previous = stack_a->start;
 	stack_a->len = stack_a->len + 1;
 	stack_b->len = stack_b->len - 1;
 	stack_a->operations = add_text(stack_a->operations, "pa\n");

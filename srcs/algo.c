@@ -22,19 +22,22 @@ static void	algo_suite(t_stack *stack_a, t_stack *stack_b)
 		arrange_b(stack_a, stack_b);
 		return ;
 	}
-	while (!a_is_sorted(stack_a))
+	while (!a_is_sorted(stack_a) && stack_a->len > 1)
 	{
 		median = calc_median(stack_a);
 		length = stack_a->len;
-		while (stack_a->len > length / 2)
+		while (stack_a->len > length / 2 && stack_a->len >= 2)
 		{
-			write(1, "tutu\n", 5); // infinite loop ici
-			if (stack_a->start->value < median)
+			if (stack_a->start->value <= median)
 				push_b(stack_a, stack_b);
 			else
 				rotate_a(stack_a, stack_b);
+			if (stack_b->start->value < stack_b->start->next->value)
+				swap_b(stack_a, stack_b);
 		}
 	}
+	if (a_is_sorted(stack_a) == 0 && stack_a->len == 2)
+		swap_a(stack_a, stack_b);
 	arrange_b(stack_a, stack_b);
 }
 
@@ -58,5 +61,9 @@ void		algo(t_stack *stack_a, t_stack *stack_b)
 		else
 			rotate_a(stack_a, stack_b);
 	}
+	if (stack_b->start->value < stack_b->start->next->value)
+		swap_b(stack_a, stack_b);
 	algo_suite(stack_a, stack_b);
+	while (!ismin(stack_a->start))
+		reverse_rotate_a(stack_a, stack_b);
 }

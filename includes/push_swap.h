@@ -13,45 +13,53 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include "../libftprintf/includes/ft_printf.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include "../libftprintf/includes/ft_printf.h"
 
-typedef struct 		s_value
+typedef struct	s_value
 {
 	int					value;
 	struct s_value		*next;
 	struct s_value		*previous;
-}					t_value;
+}				t_value;
 
-typedef struct		s_stack
+typedef struct	s_stack
 {
 	t_value				*start;
 	int					len;
 	char				*operations;
-}					t_stack;
+}				t_stack;
 
-t_value		*create_stack(char **tab);
-void		swap_a(t_stack *stack_a, t_stack *stack_b);
-void		swap_b(t_stack *stack_a, t_stack *stack_b);
-void		swap_s(t_stack *stack_a, t_stack *stack_b);
-void		push_a(t_stack *stack_a, t_stack *stack_b);
-void		push_b(t_stack *stack_a, t_stack *stack_b);
-void		rotate_a(t_stack *stack_a, t_stack *stack_b);
-void		rotate_b(t_stack *stack_a, t_stack *stack_b);
-void		rotate_s(t_stack *stack_a, t_stack *stack_b);
-void		reverse_rotate_a(t_stack *stack_a, t_stack *stack_b);
-void		reverse_rotate_b(t_stack *stack_a, t_stack *stack_b);
-void		reverse_rotate_r(t_stack *stack_a, t_stack *stack_b);
-int			a_is_sorted(t_stack *stack_a);
-int			b_is_sorted(t_stack *stack_b);
-int			calc_median(t_stack *stack);
-void		swap_solver(t_stack *stack_a);
-void		algo(t_stack *stack_a, t_stack *stack_b);
-int			ismax(t_value *number);
-int			ismin(t_value *number);
-void		simplify_operations(t_stack *stack);
-char		*add_text(char *s1, char *s2);
+t_value			*create_stack(char **tab);
+void			swap_a(t_stack *stack_a, t_stack *stack_b);
+void			swap_b(t_stack *stack_a, t_stack *stack_b);
+void			swap_s(t_stack *stack_a, t_stack *stack_b);
+void			push_a(t_stack *stack_a, t_stack *stack_b);
+void			push_b(t_stack *stack_a, t_stack *stack_b);
+void			rotate_a(t_stack *stack_a, t_stack *stack_b);
+void			rotate_b(t_stack *stack_a, t_stack *stack_b);
+void			rotate_s(t_stack *stack_a, t_stack *stack_b);
+void			reverse_rotate_a(t_stack *stack_a, t_stack *stack_b);
+void			reverse_rotate_b(t_stack *stack_a, t_stack *stack_b);
+void			reverse_rotate_r(t_stack *stack_a, t_stack *stack_b);
+int				a_is_sorted(t_stack *stack_a);
+int				b_is_sorted(t_stack *stack_b);
+int				calc_median(t_stack *stack);
+void			swap_solver(t_stack *stack_a);
+void			algo(t_stack *stack_a, t_stack *stack_b);
+void			arrange_b(t_stack *stack_a, t_stack *stack_b);
+int				ismax(t_value *number);
+int				is_second_max(t_value *number);
+int				ismin(t_value *number);
+int				is_second_min(t_value *number);
+int				min_value(int i, int j, int k, int l);
+void			simplify_operations(t_stack *stack);
+char			*add_text(char *s1, char *s2);
+void			i_is_min(t_stack *stack_a, t_stack *stack_b, int i);
+void			rev_i_is_min(t_stack *stack_a, t_stack *stack_b, int i);
+void			j_is_min(t_stack *stack_a, t_stack *stack_b, int i);
+void			rev_j_is_min(t_stack *stack_a, t_stack *stack_b, int i);
 
 #endif

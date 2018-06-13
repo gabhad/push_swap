@@ -52,14 +52,18 @@ static void	shortest_path(t_stack *stack_a, t_stack *stack_b)
 
 void		arrange_b(t_stack *stack_a, t_stack *stack_b)
 {
-	while (stack_b->len > 0)
+	if (b_is_sorted(stack_b))
 	{
-		while (ismax(stack_b->start))
+		while (stack_b->len)
 			push_a(stack_a, stack_b);
-		if (!stack_b->len)
-			return ;
-		shortest_path(stack_a, stack_b);
 	}
-	while (!a_is_sorted(stack_a))
-		reverse_rotate_a(stack_a, stack_b);
+	else
+		while (stack_b->len > 0)
+		{
+			while (ismax(stack_b->start))
+				push_a(stack_a, stack_b);
+			if (!stack_b->len)
+				return ;
+			shortest_path(stack_a, stack_b);
+		}
 }

@@ -34,16 +34,16 @@ static char	*change_text(char *str, char *dest, char *src)
 	return (new_reply);
 }
 
-void	simplify_operations(t_stack *stack)
+void		simplify_operations(t_stack *stack)
 {
-	while(strstr(stack->operations, "ra\nrb"))
+	while (strstr(stack->operations, "ra\nrb"))
 		stack->operations = change_text(stack->operations, "rr", "ra\nrb");
-	while(strstr(stack->operations, "sa\nsb"))
+	while (strstr(stack->operations, "sa\nsb"))
 		stack->operations = change_text(stack->operations, "ss", "sa\nsb");
-	while(strstr(stack->operations, "rra\nrrb"))
+	while (strstr(stack->operations, "rra\nrrb"))
 		stack->operations = change_text(stack->operations, "rrr", "rra\nrrb");
-	while(strstr(stack->operations, "pb\npa"))
+	while (strstr(stack->operations, "pb\npa"))
 		stack->operations = change_text(stack->operations, "", "pb\npa\n");
-	while(strstr(stack->operations, "pa\npb"))
+	while (strstr(stack->operations, "pa\npb"))
 		stack->operations = change_text(stack->operations, "", "pa\npb\n");
 }
