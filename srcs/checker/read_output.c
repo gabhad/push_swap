@@ -46,7 +46,7 @@ void		read_output(t_stack *stack_a)
 			write(1, "Error\n", 6);
 			return ;
 		}
-		do_operations(stack_a, stack_b, line);
+		do_op(stack_a, stack_b, line);
 		ft_strdel(&line);
 	}
 	if (a_is_sorted(stack_a) && !stack_b->start)

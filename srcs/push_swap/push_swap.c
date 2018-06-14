@@ -22,19 +22,13 @@ static int	check_error_bis(char **argv)
 	j = 0;
 	while (argv[i])
 	{
-		if (push_swap_atoi(argv[i]) > 2147483647 || 
+		if (push_swap_atoi(argv[i]) > 2147483647 ||
 			push_swap_atoi(argv[i]) < -2147483648)
-			{
-				write(1, "Error\n", 6);
-				return (0);
-			}
+			return (0);
 		while (argv[i + j])
 		{
 			if (!ft_strcmp(argv[i], argv[i + j]))
-			{
-				write(1, "Error\n", 6);
 				return (0);
-			}
 			j++;
 		}
 		j = 0;
@@ -58,7 +52,10 @@ static int	check_errors(char **argv)
 		i++;
 	}
 	if (!check_error_bis(argv))
+	{
+		write(1, "Error\n", 6);
 		return (1);
+	}
 	return (0);
 }
 

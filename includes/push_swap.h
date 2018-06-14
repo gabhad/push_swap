@@ -66,8 +66,7 @@ void			j_is_min(t_stack *stack_a, t_stack *stack_b, int i);
 void			rev_j_is_min(t_stack *stack_a, t_stack *stack_b, int i);
 
 int				get_next_line(const int fd, char **line);
-void			do_operations(t_stack *stack_a, t_stack *stack_b, char *operation);
+void			do_op(t_stack *stack_a, t_stack *stack_b, char *op);
 void			read_output(t_stack *stack_a);
-
 
 #endif
