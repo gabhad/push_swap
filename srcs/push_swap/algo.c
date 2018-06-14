@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-static void finish_sorting_a(t_stack *stack_a, t_stack *stack_b)
+static void	finish_sorting_a(t_stack *stack_a, t_stack *stack_b)
 {
 	while (stack_a->len > 2)
 	{
@@ -22,7 +22,6 @@ static void finish_sorting_a(t_stack *stack_a, t_stack *stack_b)
 	}
 	if (!a_is_sorted(stack_a) && stack_a->len == 2)
 		swap_a(stack_a, stack_b);
-
 }
 
 static void	algo_suite(t_stack *stack_a, t_stack *stack_b)
