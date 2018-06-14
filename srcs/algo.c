@@ -12,6 +12,19 @@
 
 #include "../includes/push_swap.h"
 
+static void finish_sorting_a(t_stack *stack_a, t_stack *stack_b)
+{
+	while (stack_a->len > 2)
+	{
+		while (!ismin(stack_a->start))
+			rotate_a(stack_a, stack_b);
+		push_b(stack_a, stack_b);
+	}
+	if (!a_is_sorted(stack_a) && stack_a->len == 2)
+		swap_a(stack_a, stack_b);
+
+}
+
 static void	algo_suite(t_stack *stack_a, t_stack *stack_b)
 {
 	int		median;
@@ -22,11 +35,11 @@ static void	algo_suite(t_stack *stack_a, t_stack *stack_b)
 		arrange_b(stack_a, stack_b);
 		return ;
 	}
-	while (!a_is_sorted(stack_a) && stack_a->len > 1)
+	while (!a_is_sorted(stack_a) && stack_a->len > 5)
 	{
 		median = calc_median(stack_a);
 		length = stack_a->len;
-		while (stack_a->len > length / 2 && stack_a->len >= 2)
+		while (stack_a->len > length / 2)
 		{
 			if (stack_a->start->value <= median)
 				push_b(stack_a, stack_b);
@@ -36,8 +49,7 @@ static void	algo_suite(t_stack *stack_a, t_stack *stack_b)
 				swap_b(stack_a, stack_b);
 		}
 	}
-	if (a_is_sorted(stack_a) == 0 && stack_a->len == 2)
-		swap_a(stack_a, stack_b);
+	finish_sorting_a(stack_a, stack_b);
 	arrange_b(stack_a, stack_b);
 }
 

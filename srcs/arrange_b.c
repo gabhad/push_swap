@@ -25,6 +25,8 @@ static void	compare_outcomes(t_stack *stack_a, t_stack *stack_b, int i, int j)
 		rev_i_is_min(stack_a, stack_b, len_b - i);
 	else
 		rev_j_is_min(stack_a, stack_b, len_b - j);
+	if (stack_a->start->value > stack_a->start->next->value)
+		swap_a(stack_a, stack_b);
 }
 
 static void	shortest_path(t_stack *stack_a, t_stack *stack_b)
