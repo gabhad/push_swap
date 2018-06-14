@@ -36,21 +36,23 @@ void		read_output(t_stack *stack_a)
 	t_stack	*stack_b;
 
 	if (!(stack_b = (t_stack*)malloc(sizeof(t_stack))))
-		return (NULL);
+		return ;
+	stack_b->start = NULL;
+	stack_b->len = 0;
 	while (get_next_line(0, &line))
 	{
 		if (!check_operations(line))
 		{
 			write(1, "Error\n", 6);
-			return (0);
+			return ;
 		}
 		else
-			do_operations(stack_a, stack_b, line);
+			stack_a->operations = ft_strjoinfree(stack_a->operations, line);
+		ft_strdel(&line);
 	}
 	if (a_is_sorted(stack_a) && !stack_b->start)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
 	free(stack_b);
-	return (0);
 }

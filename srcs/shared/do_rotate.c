@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
-void	rotate_s(t_stack *stack_a, t_stack *stack_b)
+void	rotate_r(t_stack *stack_a, t_stack *stack_b)
 {
 	stack_a->start = stack_a->start->next;
 	stack_b->start = stack_b->start->next;

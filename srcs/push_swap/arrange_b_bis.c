@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	i_is_min(t_stack *stack_a, t_stack *stack_b, int i)
 {

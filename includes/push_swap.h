@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <fcntl.h>
-# include "../libftprintf/includes/ft_printf.h"
+# include "../libft/includes/ft_printf.h"
 # include "string.h"
 # define BUFF_SIZE 32
 
@@ -34,6 +34,7 @@ typedef struct	s_stack
 }				t_stack;
 
 t_value			*create_stack(char **tab);
+intmax_t		push_swap_atoi(const char *str);
 void			swap_a(t_stack *stack_a, t_stack *stack_b);
 void			swap_b(t_stack *stack_a, t_stack *stack_b);
 void			swap_s(t_stack *stack_a, t_stack *stack_b);
@@ -41,7 +42,7 @@ void			push_a(t_stack *stack_a, t_stack *stack_b);
 void			push_b(t_stack *stack_a, t_stack *stack_b);
 void			rotate_a(t_stack *stack_a, t_stack *stack_b);
 void			rotate_b(t_stack *stack_a, t_stack *stack_b);
-void			rotate_s(t_stack *stack_a, t_stack *stack_b);
+void			rotate_r(t_stack *stack_a, t_stack *stack_b);
 void			reverse_rotate_a(t_stack *stack_a, t_stack *stack_b);
 void			reverse_rotate_b(t_stack *stack_a, t_stack *stack_b);
 void			reverse_rotate_r(t_stack *stack_a, t_stack *stack_b);
@@ -66,5 +67,7 @@ void			rev_j_is_min(t_stack *stack_a, t_stack *stack_b, int i);
 
 int				get_next_line(const int fd, char **line);
 void			do_operations(t_stack *stack_a, t_stack *stack_b, char *operation);
+void			read_output(t_stack *stack_a);
+
 
 #endif
