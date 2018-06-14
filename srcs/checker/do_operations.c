@@ -16,7 +16,7 @@ void	do_op(t_stack *stack_a, t_stack *stack_b, char *op)
 {
 	if (!ft_strcmp(op, "pa"))
 		push_a(stack_a, stack_b);
-	if (!ft_strcmp(operation, "pb"))
+	if (!ft_strcmp(op, "pb"))
 		push_b(stack_a, stack_b);
 	if (!ft_strcmp(op, "sa"))
 		swap_a(stack_a, stack_b);
