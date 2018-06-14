@@ -22,7 +22,10 @@ void	swap_solver(t_stack *stack_a)
 		return ;
 	stack_b->len = 0;
 	stack_b->start = NULL;
-	algo(stack_a, stack_b);
+	if (stack_a->len < 11)
+		algo_under_10(stack_a, stack_b);
+	else
+		algo(stack_a, stack_b);
 	free(stack_b);
 	simplify_operations(stack_a);
 }

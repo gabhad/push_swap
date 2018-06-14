@@ -12,6 +12,32 @@
 
 #include "push_swap.h"
 
+static void		delete_stack(t_stack *stack_a)
+{
+	t_value	*temp;
+	t_value	*bis;
+
+	if (!stack_a->start)
+		return ;
+	temp = stack_a->start;
+	if (!temp->next)
+	{
+		free(temp);
+		return ;
+	}
+	while (temp->next)
+	{
+		bis = temp->next;
+		temp->next = NULL;
+		temp->previous = NULL;
+		free(temp);
+		temp = bis;
+	}
+	temp->previous = NULL;
+	temp->next = NULL;
+	free(temp);
+}
+
 static t_stack	*fill_stack(t_stack *stack_a, int argc, char **argv)
 {
 	t_value		*start;
@@ -25,7 +51,7 @@ static t_stack	*fill_stack(t_stack *stack_a, int argc, char **argv)
 	return (stack_a);
 }
 
-static int	check_error_bis(int argc, char **argv)
+static int		check_error_bis(int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -86,6 +112,9 @@ int				main(int argc, char **argv)
 		return (1);
 	}
 	read_output(stack_a);
+	delete_stack(stack_a);
+	if (stack_a->operations)
+		ft_strdel(&stack_a->operations);
 	free(stack_a);
 	return (0);
 }

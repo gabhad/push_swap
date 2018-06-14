@@ -14,9 +14,8 @@
 
 void	reverse_rotate_r(t_stack *stack_a, t_stack *stack_b)
 {
-	stack_a->start = stack_a->start->previous;
-	stack_b->start = stack_b->start->previous;
-	stack_a->operations = add_text(stack_a->operations, "rrr\n");
+	reverse_rotate_a(stack_a, stack_b);
+	reverse_rotate_b(stack_a, stack_b);
 }
 
 void	reverse_rotate_b(t_stack *stack_a, t_stack *stack_b)

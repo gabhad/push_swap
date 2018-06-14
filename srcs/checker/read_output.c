@@ -12,6 +12,33 @@
 
 #include "push_swap.h"
 
+static void	del_stack_b(t_stack *stack_b)
+{
+	t_value	*temp;
+	t_value	*bis;
+
+	if (!stack_b->start)
+	{
+		free(stack_b);
+		return ;
+	}
+	temp = stack_b->start;
+	if (!temp->next)
+	{
+		free(temp);
+		free(stack_b);
+		return ;
+	}
+	while (temp->next)
+	{
+		bis = temp->next;
+		free(temp);
+		temp = bis;
+	}
+	free(temp);
+	free(stack_b);
+}
+
 static int	check_operations(char *line)
 {
 	if (!ft_strcmp(line, "pa") ||
@@ -44,6 +71,7 @@ void		read_output(t_stack *stack_a)
 		if (!check_operations(line))
 		{
 			write(1, "Error\n", 6);
+			del_stack_b(stack_b);
 			return ;
 		}
 		do_op(stack_a, stack_b, line);
@@ -53,5 +81,5 @@ void		read_output(t_stack *stack_a)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free(stack_b);
+	del_stack_b(stack_b);
 }

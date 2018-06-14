@@ -52,6 +52,7 @@ int				b_is_sorted(t_stack *stack_b);
 int				calc_median(t_stack *stack);
 void			swap_solver(t_stack *stack_a);
 void			algo(t_stack *stack_a, t_stack *stack_b);
+void			algo_under_10(t_stack *stack_a, t_stack *stack_b);
 void			arrange_b(t_stack *stack_a, t_stack *stack_b);
 int				ismax(t_value *number);
 int				is_second_max(t_value *number);

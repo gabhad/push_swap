@@ -14,9 +14,8 @@
 
 void	rotate_r(t_stack *stack_a, t_stack *stack_b)
 {
-	stack_a->start = stack_a->start->next;
-	stack_b->start = stack_b->start->next;
-	stack_a->operations = add_text(stack_a->operations, "rr\n");
+	rotate_a(stack_a, stack_b);
+	rotate_b(stack_a, stack_b);
 }
 
 void	rotate_b(t_stack *stack_a, t_stack *stack_b)

@@ -13,6 +13,32 @@
 #include "push_swap.h"
 #include <stdlib.h>
 
+static void	delete_stack(t_stack *stack_a)
+{
+	t_value	*temp;
+	t_value	*bis;
+
+	if (!stack_a->start)
+		return ;
+	temp = stack_a->start;
+	if (!temp->next)
+	{
+		free(temp);
+		return ;
+	}
+	while (temp->next)
+	{
+		bis = temp->next;
+		temp->next = NULL;
+		temp->previous = NULL;
+		free(temp);
+		temp = bis;
+	}
+	temp->previous = NULL;
+	temp->next = NULL;
+	free(temp);
+}
+
 static int	check_error_bis(int argc, char **argv)
 {
 	int		i;
@@ -79,6 +105,7 @@ int			main(int argc, char **argv)
 	len = ft_strlen(stack_a->operations);
 	write(1, stack_a->operations, len);
 	ft_strdel(&stack_a->operations);
+	delete_stack(stack_a);
 	free(stack_a);
 	return (0);
 }

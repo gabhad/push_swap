@@ -30,6 +30,7 @@ SHARED_PATH =		srcs/shared/
 CHECK_PATH =		srcs/checker/
 
 PUSH_SRC_NAME =		algo.c \
+					algo_under_10.c \
 					arrange_b.c \
 					arrange_b_bis.c \
 					calc_median.c \
