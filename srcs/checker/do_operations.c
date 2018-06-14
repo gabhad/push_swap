@@ -14,26 +14,26 @@
 
 void	do_operations(t_stack *stack_a, t_stack *stack_b, char *operation)
 {
-	if (ft_strcmp(operation, "pa"))
+	if (!ft_strcmp(operation, "pa"))
 		push_a(stack_a, stack_b);
-	if (ft_strcmp(operation, "pb"))
+	if (!ft_strcmp(operation, "pb"))
 		push_b(stack_a, stack_b);
-	if (ft_strcmp(operation, "sa"))
+	if (!ft_strcmp(operation, "sa"))
 		swap_a(stack_a, stack_b);
-	if (ft_strcmp(operation, "sb"))
+	if (!ft_strcmp(operation, "sb"))
 		swap_b(stack_a, stack_b);
-	if (ft_strcmp(operation, "ss"))
+	if (!ft_strcmp(operation, "ss"))
 		swap_s(stack_a, stack_b);
-	if (ft_strcmp(operation, "ra"))
+	if (!ft_strcmp(operation, "ra"))
 		rotate_a(stack_a, stack_b);
-	if (ft_strcmp(operation, "rb"))
+	if (!ft_strcmp(operation, "rb"))
 		rotate_b(stack_a, stack_b);
-	if (ft_strcmp(operation, "rr"))
+	if (!ft_strcmp(operation, "rr"))
 		rotate_r(stack_a, stack_b);
-	if (ft_strcmp(operation, "rra"))
+	if (!ft_strcmp(operation, "rra"))
 		reverse_rotate_a(stack_a, stack_b);
-	if (ft_strcmp(operation, "rrb"))
+	if (!ft_strcmp(operation, "rrb"))
 		reverse_rotate_b(stack_a, stack_b);
-	if (ft_strcmp(operation, "rrr"))
+	if (!ft_strcmp(operation, "rrr"))
 		reverse_rotate_r(stack_a, stack_b);
 }

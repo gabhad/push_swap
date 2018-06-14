@@ -14,20 +14,19 @@
 
 static int	check_operations(char *line)
 {
-	if (!ft_strcmp(line, "pa")
-		&& !ft_strcmp(line, "pb")
-		&& !ft_strcmp(line, "sa")
-		&& !ft_strcmp(line, "sb")
-		&& !ft_strcmp(line, "ss")
-		&& !ft_strcmp(line, "ra")
-		&& !ft_strcmp(line, "rb")
-		&& !ft_strcmp(line, "rr")
-		&& !ft_strcmp(line, "rra")
-		&& !ft_strcmp(line, "rrb")
-		&& !ft_strcmp(line, "rrr"))
-		return (0);
-	else
+	if (!ft_strcmp(line, "pa") ||
+		!ft_strcmp(line, "pb") ||
+		!ft_strcmp(line, "sa") ||
+		!ft_strcmp(line, "sb") ||
+		!ft_strcmp(line, "ss") ||
+		!ft_strcmp(line, "ra") ||
+		!ft_strcmp(line, "rb") ||
+		!ft_strcmp(line, "rr") ||
+		!ft_strcmp(line, "rra") ||
+		!ft_strcmp(line, "rrb") ||
+		!ft_strcmp(line, "rrr"))
 		return (1);
+	return (0);
 }
 
 void		read_output(t_stack *stack_a)
@@ -39,6 +38,7 @@ void		read_output(t_stack *stack_a)
 		return ;
 	stack_b->start = NULL;
 	stack_b->len = 0;
+	line = NULL;
 	while (get_next_line(0, &line))
 	{
 		if (!check_operations(line))
@@ -46,8 +46,7 @@ void		read_output(t_stack *stack_a)
 			write(1, "Error\n", 6);
 			return ;
 		}
-		else
-			stack_a->operations = ft_strjoinfree(stack_a->operations, line);
+		do_operations(stack_a, stack_b, line);
 		ft_strdel(&line);
 	}
 	if (a_is_sorted(stack_a) && !stack_b->start)

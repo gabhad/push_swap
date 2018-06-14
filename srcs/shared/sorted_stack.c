@@ -16,7 +16,7 @@ int		a_is_sorted(t_stack *stack_a)
 {
 	t_value	*temp;
 
-	if (stack_a->len == 0 || stack_a->len == 1)
+	if (stack_a->len <= 1)
 		return (1);
 	temp = stack_a->start;
 	while (temp->next != stack_a->start)
