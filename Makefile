@@ -88,7 +88,7 @@ $(NAME): comp_lib $(PUSH_OBJ_PATH) $(PUSH_OBJ) $(SHARED_OBJ_PATH) $(SHARED_OBJ) 
 					@$(CC) $(PUSH_OBJ) $(SHARED_OBJ) $(PUSH_SWAP_H) $(LIBFT_PATH)$(LIBFT_A) \
 							-o $(PUSH_SWAP)
 					@echo "~~~push_swap successfully created !~~~"
-					@$(CC) -g -fsanitize=address $(CHECK_OBJ) $(SHARED_OBJ) $(PUSH_SWAP_H) $(LIBFT_PATH)$(LIBFT_A) \
+					@$(CC) $(CHECK_OBJ) $(SHARED_OBJ) $(PUSH_SWAP_H) $(LIBFT_PATH)$(LIBFT_A) \
 							-o $(CHECKER)
 					@echo "~~~checker successfully created !~~~"
 

@@ -25,19 +25,19 @@ static t_stack	*fill_stack(t_stack *stack_a, int argc, char **argv)
 	return (stack_a);
 }
 
-static int		check_error_bis(char **argv)
+static int	check_error_bis(int argc, char **argv)
 {
-	int			i;
-	int			j;
+	int		i;
+	int		j;
 
-	i = 0;
-	j = 1;
-	while (argv[i])
+	i = 1;
+	j = 2;
+	while (i < argc - 2)
 	{
 		if (push_swap_atoi(argv[i]) > 2147483647 ||
 			push_swap_atoi(argv[i]) < -2147483648)
 			return (0);
-		while (argv[i + j])
+		while ((i + j) < argc - 1)
 		{
 			if (!ft_strcmp(argv[i], argv[i + j]))
 				return (0);
@@ -49,7 +49,7 @@ static int		check_error_bis(char **argv)
 	return (1);
 }
 
-static int		check_errors(char **argv)
+static int		check_errors(int argc, char **argv)
 {
 	int			i;
 
@@ -63,7 +63,7 @@ static int		check_errors(char **argv)
 		}
 		i++;
 	}
-	if (!check_error_bis(argv))
+	if (!check_error_bis(argc, argv))
 	{
 		write(1, "Error\n", 6);
 		return (1);
@@ -78,7 +78,7 @@ int				main(int argc, char **argv)
 	stack_a = NULL;
 	if (argc == 1)
 		return (1);
-	if (check_errors(argv))
+	if (check_errors(argc, argv))
 		return (1);
 	if (!(stack_a = fill_stack(stack_a, argc, argv)))
 	{
