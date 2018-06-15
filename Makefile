@@ -86,7 +86,7 @@ $(OBJ_PATH):
 					@mkdir -p $(PUSH_OBJ_PATH) $(CHECK_OBJ_PATH) $(SHARED_OBJ_PATH)
 
 $(NAME): comp_lib $(PUSH_OBJ_PATH) $(PUSH_OBJ) $(SHARED_OBJ_PATH) $(SHARED_OBJ) $(CHECK_OBJ_PATH) $(CHECK_OBJ)
-					@$(CC) $(PUSH_OBJ) $(SHARED_OBJ) $(PUSH_SWAP_H) $(LIBFT_PATH)$(LIBFT_A) \
+					@$(CC) -g -fsanitize=address $(PUSH_OBJ) $(SHARED_OBJ) $(PUSH_SWAP_H) $(LIBFT_PATH)$(LIBFT_A) \
 							-o $(PUSH_SWAP)
 					@echo "~~~push_swap successfully created !~~~"
 					@$(CC) $(CHECK_OBJ) $(SHARED_OBJ) $(PUSH_SWAP_H) $(LIBFT_PATH)$(LIBFT_A) \

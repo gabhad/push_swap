@@ -18,7 +18,7 @@ static void	arrange_b_under_10(t_stack *stack_a, t_stack *stack_b)
 	t_value	*temp;
 
 	i = 0;
-	while(stack_b->len > 0)
+	while (stack_b->len > 0)
 	{
 		while (ismax(stack_b->start))
 			push_a(stack_a, stack_b);
@@ -30,9 +30,9 @@ static void	arrange_b_under_10(t_stack *stack_a, t_stack *stack_b)
 			i++;
 			temp = temp->next;
 		}
-		while(!ismax(stack_b->start))
+		while (!ismax(stack_b->start))
 		{
-			if (i > stack_b->len / 2)	
+			if (i > stack_b->len / 2)
 				reverse_rotate_b(stack_a, stack_b);
 			else
 				rotate_b(stack_a, stack_b);
@@ -58,7 +58,7 @@ static void	algo_suite(t_stack *stack_a, t_stack *stack_b)
 		}
 		while (!ismin(stack_a->start))
 		{
-			if (i > stack_a->len / 2)	
+			if (i > stack_a->len / 2)
 				reverse_rotate_a(stack_a, stack_b);
 			else
 				rotate_a(stack_a, stack_b);
@@ -71,7 +71,6 @@ void		algo_under_10(t_stack *stack_a, t_stack *stack_b)
 {
 	int		median;
 	int		len;
-
 
 	median = calc_median(stack_a);
 	len = stack_a->len;

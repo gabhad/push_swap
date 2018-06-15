@@ -19,13 +19,12 @@ static void	delete_stack(t_stack *stack_a)
 	t_value	*bis;
 
 	if (!stack_a->start)
-		return ;
-	temp = stack_a->start;
-	if (!temp->next)
 	{
-		free(temp);
+		free(stack_a);
 		return ;
 	}
+	temp = stack_a->start;
+	temp->previous->next = NULL;
 	while (temp->next)
 	{
 		bis = temp->next;
@@ -50,34 +49,22 @@ static int	check_error_bis(int argc, char **argv)
 	{
 		if (push_swap_atoi(argv[i]) > 2147483647 ||
 			push_swap_atoi(argv[i]) < -2147483648)
-			return (0);
+			return (1);
 		while ((i + j) < argc - 1)
 		{
 			if (!ft_strcmp(argv[i], argv[i + j]))
-				return (0);
+				return (1);
 			j++;
 		}
 		i++;
 		j = i + 1;
 	}
-	return (1);
+	return (0);
 }
 
 static int	check_errors(int argc, char **argv)
 {
-	int		i;
-
-	i = 1;
-	while (argv[i])
-	{
-		if (ft_atoi(argv[i]) == 0 && ft_strcmp(argv[i], "0") != 0)
-		{
-			write(1, "Error\n", 6);
-			return (1);
-		}
-		i++;
-	}
-	if (!check_error_bis(argc, argv))
+	if (check_error_bis(argc, argv))
 	{
 		write(1, "Error\n", 6);
 		return (1);
@@ -97,9 +84,13 @@ int			main(int argc, char **argv)
 		return (0);
 	if (!(stack_a = (t_stack*)malloc(sizeof(t_stack))))
 		return (-1);
-	start = create_stack(argv);
+	if (!(start = create_stack(stack_a, argv)))
+	{
+		delete_stack(stack_a);
+		write(1, "Error\n", 6);
+		return (0);
+	}
 	stack_a->start = start;
-	stack_a->len = argc - 1;
 	stack_a->operations = NULL;
 	swap_solver(stack_a);
 	len = ft_strlen(stack_a->operations);

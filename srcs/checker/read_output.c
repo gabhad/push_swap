@@ -23,12 +23,7 @@ static void	del_stack_b(t_stack *stack_b)
 		return ;
 	}
 	temp = stack_b->start;
-	if (!temp->next)
-	{
-		free(temp);
-		free(stack_b);
-		return ;
-	}
+	temp->previous->next = NULL;
 	while (temp->next)
 	{
 		bis = temp->next;

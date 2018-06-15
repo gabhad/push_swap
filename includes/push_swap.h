@@ -33,7 +33,7 @@ typedef struct	s_stack
 	char				*operations;
 }				t_stack;
 
-t_value			*create_stack(char **tab);
+t_value			*create_stack(t_stack *stack_a, char **tab);
 intmax_t		push_swap_atoi(const char *str);
 void			swap_a(t_stack *stack_a, t_stack *stack_b);
 void			swap_b(t_stack *stack_a, t_stack *stack_b);
