@@ -13,13 +13,13 @@
 PUSH_SWAP =			push_swap
 CHECKER =			checker
 NAME = 				$(PUSH_SWAP) $(CHECKER)
-LIBFT_A = 			libft.a
+LIBFT_A = 			libftprintf.a
 
 CC =				gcc
 CFLAGS =			-Wall -Wextra -Werror -c
 
 PUSH_SWAP_H =		-I includes/
-LIBFT_PATH =		libft/
+LIBFT_PATH =		libftprintf/
 
 OBJ_PATH =			obj/
 PUSH_OBJ_PATH =		obj/push_swap/
@@ -46,6 +46,7 @@ CHECK_SRC_NAME =	checker.c \
 
 SHARED_SRC_NAME =	add_text.c \
 					create_stack.c \
+					create_tvalue.c \
 					do_push.c \
 					do_reverse_rotate.c \
 					do_rotate.c \
@@ -86,7 +87,7 @@ $(OBJ_PATH):
 					@mkdir -p $(PUSH_OBJ_PATH) $(CHECK_OBJ_PATH) $(SHARED_OBJ_PATH)
 
 $(NAME): comp_lib $(PUSH_OBJ_PATH) $(PUSH_OBJ) $(SHARED_OBJ_PATH) $(SHARED_OBJ) $(CHECK_OBJ_PATH) $(CHECK_OBJ)
-					@$(CC) -g -fsanitize=address $(PUSH_OBJ) $(SHARED_OBJ) $(PUSH_SWAP_H) $(LIBFT_PATH)$(LIBFT_A) \
+					@$(CC) $(PUSH_OBJ) $(SHARED_OBJ) $(PUSH_SWAP_H) $(LIBFT_PATH)$(LIBFT_A) \
 							-o $(PUSH_SWAP)
 					@echo "~~~push_swap successfully created !~~~"
 					@$(CC) $(CHECK_OBJ) $(SHARED_OBJ) $(PUSH_SWAP_H) $(LIBFT_PATH)$(LIBFT_A) \

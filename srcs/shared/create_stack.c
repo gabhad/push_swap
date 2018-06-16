@@ -12,56 +12,32 @@
 
 #include "push_swap.h"
 
-static int		delete_tab(char **tab, t_value *temp)
+static void		free_stack(t_value *temp)
+{
+	t_value	*tempbis;
+
+	if (!temp)
+		return ;
+	while (temp->previous)
+		temp = temp->previous;
+	while (temp->next)
+	{
+		tempbis = temp->next;
+		free(temp);
+		tempbis = temp->next;
+	}
+	free(temp);
+}
+
+static int		delete_tab(char **tab)
 {
 	int		i;
-	t_value *tempbis;
 
 	i = 0;
 	while (tab[i])
 		ft_strdel(&tab[i++]);
 	free(tab);
-	if (temp)
-	{
-		while (temp->previous)
-		{
-			printf("tutu");
-			temp = temp->previous;
-		}
-		while (temp->next)
-		{
-			printf("toto");
-			tempbis = temp->next;
-			printf("tintin");
-			free(temp);
-			printf("tata");
-			temp = tempbis;
-		}
-		free(temp);
-	}
 	return (0);
-}
-
-static t_value	*new_tvalue(char *str)
-{
-	t_value	*new;
-	int		i;
-
-	i = 1;
-	if (str[0] != '-' && str[0] != '+' && (str[0] < '0' || str[0] > '9'))
-		return (NULL);
-	while (str[i])
-	{
-		if (str[i] < '0' || str[i] > '9')
-			return (NULL);
-		i++;
-	}
-	if (!(new = (t_value*)malloc(sizeof(t_value))))
-		return (NULL);
-	new->value = ft_atoi(str);
-	new->next = NULL;
-	new->previous = NULL;
-	return (new);
 }
 
 static int		split_table(t_value *start, char *str)
@@ -78,13 +54,17 @@ static int		split_table(t_value *start, char *str)
 	i = 0;
 	while (table[i])
 	{
-		if (!(temp->next = new_tvalue(table[i++])))
-			return (delete_tab(table, temp));
+		if (!(temp->next = new_tvalue(table[i])))
+		{
+			free_stack(temp);
+			return (delete_tab(table));
+		}
 		tempbis = temp;
 		temp = temp->next;
 		temp->previous = tempbis;
+		i++;
 	}
-	i = delete_tab(table, temp);
+	delete_tab(table);
 	return (1);
 }
 
@@ -99,17 +79,20 @@ static int		first_argument(t_value **start, char *str)
 	table = ft_strsplit(str, ' ');
 	i = 1;
 	if (!(*start = new_tvalue(table[0])))
-		return (delete_tab(table, temp));
+		return (delete_tab(table));
 	temp = *start;
 	while (table[i])
 	{
 		if (!(temp->next = new_tvalue(table[i++])))
-			return (delete_tab(table, temp));
+		{
+			free_stack(temp);
+			return (delete_tab(table));
+		}
 		tempbis = temp;
 		temp = temp->next;
 		temp->previous = tempbis;
 	}
-	i = delete_tab(table, temp);
+	delete_tab(table);
 	return (1);
 }
 

@@ -84,7 +84,6 @@ int				main(int argc, char **argv)
 		return (-1);
 	if (!(start = create_stack(stack_a, argv)))
 	{
-		stack_a->start = start;
 		delete_stack(stack_a);
 		write(1, "Error\n", 6);
 		return (0);
