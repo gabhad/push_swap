@@ -40,7 +40,6 @@ static void	arrange_b_under_10(t_stack *stack_a, t_stack *stack_b)
 	}
 	while (!a_is_sorted(stack_a))
 		reverse_rotate_a(stack_a, stack_b);
-	printf("mama");
 }
 
 static void	algo_suite(t_stack *stack_a, t_stack *stack_b)

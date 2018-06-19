@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <fcntl.h>
-# include "../libft/includes/ft_printf.h"
+# include "../libftprintf/includes/ft_printf.h"
 # include "string.h"
 # define BUFF_SIZE 32
 
@@ -34,6 +34,7 @@ typedef struct	s_stack
 }				t_stack;
 
 t_value			*create_stack(t_stack *stack_a, char **tab);
+t_value			*new_tvalue(char *str);
 intmax_t		push_swap_atoi(const char *str);
 void			swap_a(t_stack *stack_a, t_stack *stack_b);
 void			swap_b(t_stack *stack_a, t_stack *stack_b);
