@@ -38,6 +38,9 @@ static void	arrange_b_under_10(t_stack *stack_a, t_stack *stack_b)
 				rotate_b(stack_a, stack_b);
 		}
 	}
+	while (!a_is_sorted(stack_a))
+		reverse_rotate_a(stack_a, stack_b);
+	printf("mama");
 }
 
 static void	algo_suite(t_stack *stack_a, t_stack *stack_b)
@@ -89,7 +92,7 @@ void		algo_under_10(t_stack *stack_a, t_stack *stack_b)
 			rotate_b(stack_a, stack_b);
 	}
 	if (a_is_sorted(stack_a) == 1)
-		arrange_b(stack_a, stack_b);
+		arrange_b_under_10(stack_a, stack_b);
 	else
 		algo_suite(stack_a, stack_b);
 }

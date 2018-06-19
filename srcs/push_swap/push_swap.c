@@ -64,10 +64,22 @@ static int	check_error_bis(int argc, char **argv)
 
 static int	check_errors(int argc, char **argv)
 {
+	int		i;
+
 	if (check_error_bis(argc, argv))
 	{
 		write(1, "Error\n", 6);
 		return (1);
+	}
+	i = 0;
+	while (argv[i])
+	{
+		if (!ft_strcmp(argv[i], " "))
+		{
+			write(1, "Error\n", 6);
+			return (1);
+		}
+		i++;
 	}
 	return (0);
 }
