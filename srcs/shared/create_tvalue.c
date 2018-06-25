@@ -12,12 +12,21 @@
 
 #include "push_swap.h"
 
+static int	testval(char *str)
+{
+	if (push_swap_atoi(str) > 2147483647 || push_swap_atoi(str) < -2147483648)
+		return (0);
+	return (1);
+}
+
 t_value		*new_tvalue(char *str)
 {
 	t_value	*new;
 	int		i;
 
 	i = 1;
+	if (!str)
+		return (NULL);
 	if (str[0] != '-' && str[0] != '+' && (str[0] < '0' || str[0] > '9'))
 		return (NULL);
 	while (str[i])
@@ -26,6 +35,8 @@ t_value		*new_tvalue(char *str)
 			return (NULL);
 		i++;
 	}
+	if (!testval(str))
+		return (NULL);
 	if (!(new = (t_value*)malloc(sizeof(t_value))))
 		return (NULL);
 	new->value = ft_atoi(str);

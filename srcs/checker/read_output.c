@@ -66,6 +66,7 @@ void		read_output(t_stack *stack_a)
 		if (!check_operations(line))
 		{
 			write(1, "Error\n", 6);
+			ft_strdel(&line);
 			del_stack_b(stack_b);
 			return ;
 		}

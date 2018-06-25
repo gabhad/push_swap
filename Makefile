@@ -13,13 +13,13 @@
 PUSH_SWAP =			push_swap
 CHECKER =			checker
 NAME = 				$(PUSH_SWAP) $(CHECKER)
-LIBFT_A = 			libftprintf.a
+LIBFT_A = 			libft.a
 
 CC =				gcc
 CFLAGS =			-Wall -Wextra -Werror -c
 
 PUSH_SWAP_H =		-I includes/
-LIBFT_PATH =		libftprintf/
+LIBFT_PATH =		libft/
 
 OBJ_PATH =			obj/
 PUSH_OBJ_PATH =		obj/push_swap/
@@ -37,6 +37,7 @@ PUSH_SRC_NAME =		algo.c \
 					maxmin.c \
 					push_swap.c \
 					simplify_operations.c \
+					sort_3.c \
 					swap_solver.c
 
 CHECK_SRC_NAME =	checker.c \
@@ -102,7 +103,7 @@ clean:
 fclean: clean
 					@make -C $(LIBFT_PATH) fclean
 					@rm $(PUSH_SWAP) $(CHECKER)
-					@echo "~~~Fclean successful~~~"
+					@echo "~~~Fclean successful !~~~"
 
 re: fclean all
 

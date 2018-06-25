@@ -41,7 +41,7 @@ void		push_b(t_stack *stack_a, t_stack *stack_b)
 {
 	t_value	*temp;
 
-	if (stack_a->len < 2)
+	if (!stack_a->len)
 		return ;
 	temp = stack_a->start;
 	temp->previous->next = temp->next;

@@ -22,7 +22,11 @@ void	swap_solver(t_stack *stack_a)
 		return ;
 	stack_b->len = 0;
 	stack_b->start = NULL;
-	if (stack_a->len < 11)
+	if (stack_a->len == 2 && !a_is_sorted(stack_a))
+		swap_a(stack_a, stack_b);
+	else if (stack_a->len == 3)
+		sort_3(stack_a, stack_b);
+	else if (stack_a->len < 11)
 		algo_under_10(stack_a, stack_b);
 	else
 		algo(stack_a, stack_b);

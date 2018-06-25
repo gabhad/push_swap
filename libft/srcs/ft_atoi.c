@@ -10,37 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static int	big_number(const char *str)
+int	ft_atoi(const char *str)
 {
-	char	*string;
-	int		i;
-	int		n;
-
-	string = ft_strdup(str);
-	i = 0;
-	n = 0;
-	if (str[0] == '-')
-		i++;
-	while (string[i] == '0')
-		i++;
-	if (ft_strlen(string) - i > 11)
-		n = 1;
-	ft_strdel(&string);
-	return (n);
-}
-
-intmax_t	push_swap_atoi(const char *str)
-{
-	intmax_t		i;
+	long int		i;
 	unsigned int	n;
 	unsigned int	t;
 
 	i = 0;
 	n = 0;
-	if (big_number(str))
-		return (2147483648);
 	while (str[n] == ' ' || str[n] == '\n' || str[n] == '\t'
 			|| str[n] == '\v' || str[n] == '\r' || str[n] == '\f')
 		n++;

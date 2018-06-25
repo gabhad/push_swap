@@ -13,11 +13,10 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <unistd.h>
 # include <fcntl.h>
-# include "../libftprintf/includes/ft_printf.h"
+# include "../libft/includes/ft_printf.h"
 # include "string.h"
-# define BUFF_SIZE 32
+# define BUFF_SIZE 1
 
 typedef struct	s_value
 {
@@ -55,6 +54,7 @@ void			swap_solver(t_stack *stack_a);
 void			algo(t_stack *stack_a, t_stack *stack_b);
 void			algo_under_10(t_stack *stack_a, t_stack *stack_b);
 void			arrange_b(t_stack *stack_a, t_stack *stack_b);
+void			sort_3(t_stack *stack_a, t_stack *stack_b);
 int				ismax(t_value *number);
 int				is_second_max(t_value *number);
 int				ismin(t_value *number);

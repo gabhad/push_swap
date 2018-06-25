@@ -24,7 +24,7 @@ static void		free_stack(t_value *temp)
 	{
 		tempbis = temp->next;
 		free(temp);
-		tempbis = temp->next;
+		temp = tempbis;
 	}
 	free(temp);
 }
